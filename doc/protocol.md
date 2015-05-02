@@ -4,7 +4,7 @@ OpenSlider uses a simple yet powerful text based protocol.
 All transactions on the wire consist of a verb, an address and optional comma separated parameters, terminated with a semicolon ';'
 ##Verbs
 Currently Supported Verbs:
-* '?'
+* `?`
 
 ```
 query			= "?";

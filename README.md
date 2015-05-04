@@ -1,5 +1,5 @@
 # OpenSlider
-After being thoroughly impressed by the flying faders on my church's new soundboard, and being completely unimpressed by the lack of flying faders in DMX consoles, I have decided to work towards remedying this.
+After being thoroughly impressed by the flying faders on my church's new soundboard, and being completely unimpressed by the lack of flying faders in DMX consoles, I have decided to work towards remedying this in a generic format that can be used by anyone who wants to build an inteface with flying faders.
 
 ##Basic hardware specifications
 * Uses any standard off the shelf motorized pot with a minimum of 1 track.

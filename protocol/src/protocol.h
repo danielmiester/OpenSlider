@@ -28,6 +28,7 @@ class Protocol{
   private:
     address_t  _address;
     char*     _buf;
+    char      _prev_char;
     int       _buf_pointer;
     uint8_t   _state;
 };

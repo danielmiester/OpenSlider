@@ -7,6 +7,20 @@ typedef int32_t address_t;
 
 class Protocol{
   public:
+    enum STATE{
+      IDLE,
+      FOUND_VERB,
+      FOUND_ADDR,
+      FOUND_ADDR_DELIM,
+      FOUND_DATA,
+      FOUND_DATA_DELIM
+    };
+    enum VERB:char{
+      QUERY='?',
+      SET='=',
+      ANNC='!',
+      SYS='$'
+    };
     Protocol(address_t addr);
     void inputData(size_t len, char* data);
     void setAddress(address_t addr);

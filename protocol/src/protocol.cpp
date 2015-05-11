@@ -1,4 +1,3 @@
-#include "Arduino.h"
 #include "protocol.h"
 
 
@@ -6,6 +5,7 @@
 Protocol::Protocol(address_t addr){
   _buf = malloc(PROTOCOL_BUF_SIZE);
   _address = addr;
+  _command = Protocol::VERB::IDLE;
 }
 Protocol::inputData(size_t len, char* data){
     
@@ -18,9 +18,26 @@ Protocol::stateMachine(char data){
 	case Protocol::STATE::IDLE:
 	    if(_prev_char != '\'){
     		switch(data){
-    		    case Protocol::VERB::QUERY:break;
-    		    
+    	    case Protocol::VERB::QUERY:
+    	    case Protocol::VERB::SET:
+    	    case Protocol::VERB::ANNC:
+    	    case Protocol::VERB::SYS:
+    	    	_state =  Protocol::STATE::FOUND_VERB;
+    	    	_command = (Protocol::VERB)data;
+    	    	_error = 0;
+    	    	break;
+    		default:
+    		    _state =  Protocol::STATE::IDLE;
+    	    	_command = Protocol::VERB::IDLE;
+    	    	_error = -1;
+    	    	break;
     		}
+	    }
+	    break;
+	case Protocol::STATE::FOUND_VERB:
+	    switch(data){
+	    case '0' ... '9':
+	    
 	    }
 	}
 }

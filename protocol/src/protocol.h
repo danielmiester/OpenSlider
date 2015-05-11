@@ -19,7 +19,8 @@ class Protocol{
       QUERY='?',
       SET='=',
       ANNC='!',
-      SYS='$'
+      SYS='$',
+      IDLE
     };
     Protocol(address_t addr);
     void inputData(size_t len, char* data);
@@ -31,5 +32,7 @@ class Protocol{
     char      _prev_char;
     int       _buf_pointer;
     uint8_t   _state;
+    VERB      _command;
+    char      _error;
 };
 #endif

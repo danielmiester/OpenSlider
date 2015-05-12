@@ -22,6 +22,12 @@ class Protocol{
       SYS='$',
       IDLE
     };
+    enum COMMAND{
+      NOP,
+      DATA_RECIEVED,
+      ADDRESS_DATA_RECIEVED,
+      ADDRESS_COMPLETED
+    };
     Protocol(address_t addr);
     void inputData(size_t len, char* data);
     void setAddress(address_t addr);
@@ -29,8 +35,8 @@ class Protocol{
   private:
     address_t  _address;
     char*     _buf;
-    char      _prev_char;
     int       _buf_pointer;
+    char      _prev_char;
     uint8_t   _state;
     VERB      _command;
     char      _error;

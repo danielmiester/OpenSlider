@@ -16,7 +16,7 @@ Protocol::setAddress(address_t addr){
 Protocol::stateMachine(char data){
 	switch(state){
 	case Protocol::STATE::IDLE:
-	    if(_prev_char != '\'){
+	    if(_prev_char != '\\'){
     		switch(data){
     	    case Protocol::VERB::QUERY:
     	    case Protocol::VERB::SET:
@@ -37,7 +37,10 @@ Protocol::stateMachine(char data){
 	case Protocol::STATE::FOUND_VERB:
 	    switch(data){
 	    case '0' ... '9':
-	    
+	       _buf[_buf_pointer++] = data;
+        case ':':
+            _state = Protocol::STATE::FOUND_ADDR_DELIM;
+            _command =    
 	    }
 	}
 }
